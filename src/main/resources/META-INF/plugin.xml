@@ -3,13 +3,21 @@
     <id>com.github.shaluk2024.liquibasechangesetguard</id>
     <name>liquibase-changeset-guard</name>
     <vendor>shaluk2024</vendor>
+    <description>
+        Warns you in real-time when you modify an already-committed
+        Liquibase changeset — before it breaks production.
+    </description>
 
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.vcs</depends>
+    <depends>Git4Idea</depends>
 
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
         <toolWindow factoryClass="com.github.shaluk2024.liquibasechangesetguard.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
-        <postStartupActivity implementation="com.github.shaluk2024.liquibasechangesetguard.startup.MyProjectActivity" />
+<!--        <postStartupActivity implementation="com.github.shaluk2024.liquibasechangesetguard.startup.MyProjectActivity" />-->
+        <highlightVisitor implementationClass="com.github.shaluk2024.liquibasechangesetguard.plugin.ChangesetHighlightVisitor"/>
     </extensions>
+
 </idea-plugin>

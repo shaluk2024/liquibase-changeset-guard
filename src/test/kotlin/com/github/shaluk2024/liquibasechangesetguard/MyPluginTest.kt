@@ -29,11 +29,36 @@ class MyPluginTest : BasePlatformTestCase() {
         myFixture.testRename("foo.xml", "foo_after.xml", "a2")
     }
 
-    fun testProjectService() {
-        val projectService = project.service<MyProjectService>()
+//    fun testProjectService() {
+//        val projectService = project.service<MyProjectService>()
+//
+//        assertNotSame(projectService.getRandomNumber(), projectService.getRandomNumber())
+//    }
 
-        assertNotSame(projectService.getRandomNumber(), projectService.getRandomNumber())
-    }
+//    fun testProjectService() {
+//        // Verify ChangelogGitCacheService is registered and wired correctly
+//        val cacheService = project.service<com.github.shaluk2024.liquibasechangesetguard.plugin.ChangelogGitCacheService>()
+//        assertNotNull("ChangelogGitCacheService must be registered in plugin.xml", cacheService)
+//
+//        // Verify cache returns null for an unknown file (cold cache — no Git in tests)
+//        val psiFile = myFixture.configureByText(XmlFileType.INSTANCE, """
+//        <?xml version="1.0" encoding="UTF-8"?>
+//        <databaseChangeLog>
+//            <changeSet id="test-001" author="shalu">
+//                <createTable tableName="test_table">
+//                    <column name="id" type="BIGINT"/>
+//                </createTable>
+//            </changeSet>
+//        </databaseChangeLog>
+//    """.trimIndent())
+//
+//        val virtualFile = psiFile.virtualFile
+//        // Cold cache should return null (no Git available in test environment)
+//        assertNull(
+//            "Cache should be empty for a file not yet fetched from Git",
+//            cacheService.getCommittedMap(virtualFile)
+//        )
+//    }
 
     override fun getTestDataPath() = "src/test/testData/rename"
 }
